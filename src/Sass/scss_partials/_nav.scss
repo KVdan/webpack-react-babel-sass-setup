@@ -1,0 +1,22 @@
+@use "./_variables" as v;
+nav {
+    background-color: v.$tree-green;
+    height: 90px;
+    width: 100vw;
+    color: white;
+    ul {
+        list-style: none;
+        height: inherit;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    li {
+        padding-bottom: 5px;
+        &:hover {
+            background-color: v.$mango;
+            padding: 5px;
+            border-radius: 10px;
+        }
+    }
+}

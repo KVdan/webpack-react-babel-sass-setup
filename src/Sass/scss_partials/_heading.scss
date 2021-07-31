@@ -1,0 +1,10 @@
+@use "./_variables" as v;
+.heading {
+    @include v.centered;
+    height: auto;
+    width: 800px;
+    padding: 10px;
+    margin: 100px auto auto auto;
+    color: v.$tree-green;
+    border: solid 3px v.$mango;
+}

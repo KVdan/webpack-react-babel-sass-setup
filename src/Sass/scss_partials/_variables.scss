@@ -1,0 +1,7 @@
+$tree-green:#023c40;
+$mango: #f6ae2d;
+@mixin centered {
+    display: flex;
+    flex-direction: columsn;
+    text-align: center;
+}
