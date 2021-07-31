@@ -1,34 +1,31 @@
-import { join, resolve as _resolve } from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-export const entry = join(__dirname, "src", "index.js");
-export const output = {
-    path: join(__dirname, "build"),
-    filename: "index.bundle.js",
-};
-export const mode = process.env.NODE_ENV || "development";
-export const resolve = {
-    modules: [_resolve(__dirname, "src"), "node_modules"],
-};
-export const devServer = { contentBase: join(__dirname, "build") };
-export const module = {
-    rules: [{
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            use: ["babel-loader"],
-        },
-        {
-            test: /\.(css|scss|sass)$/,
-            use: ["style-loader", "css-loader", "sass-loader"],
-        },
-        {
-            test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
-            use: ["file-loader"],
-        },
+module.exports = {
+    entry: path.join(__dirname, "src", "index.js"),
+    output: { path: path.join(__dirname, "build"), filename: "index.bundle.js" },
+    mode: process.env.NODE_ENV || "development",
+    resolve: { modules: [path.resolve(__dirname, "src"), "node_modules"] },
+    devServer: { contentBase: path.join(__dirname, "build") },
+    module: {
+        rules: [{
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: ["babel-loader"],
+            },
+            {
+                test: /\.(css|scss|sass)$/,
+                use: ["style-loader", "css-loader", "sass-loader"],
+            },
+            {
+                test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
+                use: ["file-loader"],
+            },
+        ],
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, "src", "index.html"),
+        }),
     ],
 };
-export const plugins = [
-    new HtmlWebpackPlugin({
-        template: join(__dirname, "src", "index.html"),
-    }),
-];
